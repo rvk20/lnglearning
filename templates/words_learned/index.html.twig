@@ -1,0 +1,126 @@
+{% extends 'baseuser.html.twig' %}
+
+{% block title %}Poznane słówka{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+</style>
+</br>
+</br>
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <h1 class="h3 mb-3 font-weight-normal" style="font-family: 'Garamond';">Wykonane sesje</h1>
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        
+        <table id="table_id" class="display">
+   <thead>
+  <tr>
+    <th>Nazwa kursu</th>
+    <th>Typ</th>
+    <th>Poprawność</th>
+    <th>Poziom trudności</th>
+    <th>Data</th>
+  </tr>
+  </thead>
+  {% for session in sessions %}
+  <tbody id="myTable">
+  <tr>
+    <td>{{ session.name }}</td>
+    <td>{{ session.type }}</td>
+    <td>{{ session.correct }}/5</td>
+    <td>{{ session.level }}</td>
+    <td>{{ session.date }}</td>
+  </tr>
+  
+   {% endfor %}  
+  </tbody>
+  
+</table>
+
+<div class="navigation" style="margin-left: auto;
+    margin-right: auto;
+    width: 35em">
+{{ knp_pagination_render(words) }}
+</div>
+
+      </div>
+    </div>
+  </div>
+  </br>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <h1 class="h3 mb-3 font-weight-normal" style="font-family: 'Garamond';">Nauczone słówka</h1>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+         
+         
+<table id="table_id" class="display">
+   <thead>
+  <tr>
+    <th>Słowo</th>
+    <th>Język</th>
+  </tr>
+  </thead>
+  {% for word in words %}
+  <tbody id="myTable">
+  <tr>
+    <td>{{ word.word }}</td>
+    <td>{{ word.language }}</td>
+  </tr>
+  
+   {% endfor %}  
+  </tbody>
+  
+</table>
+
+<div class="navigation" style="margin-left: auto;
+    margin-right: auto;
+    width: 20em">
+{{ knp_pagination_render(words) }}
+</div>
+
+      </div>
+    </div>
+  </div>
+  
+    
+
+  
+</div>
+{% endblock %}

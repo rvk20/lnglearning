@@ -1,0 +1,99 @@
+{% extends 'baseuser.html.twig' %}
+
+{% block title %}Dodaj słówka{% endblock %}
+
+
+
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+
+
+
+<div class="example-wrapper" style="display: block;
+  text-align: center;
+  
+  width: 50%;
+  
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  "> 
+  
+<h1 class="h3 mb-3 font-weight-normal" style="font-family: 'Garamond';">Dodawanie słówek</h1>
+</br>
+ <input type="text" id="txtName"/>
+</br>
+</br>
+<a class="btn btn-primary btn-sm" href = "javascript:;" onclick = "this.href='add?filter=' + document.getElementById('txtName').value ">Szukaj</a>
+
+
+</br>
+</br>
+
+
+
+<div id="tableid">
+
+<table id="table_id" class="display">
+   <thead>
+  <tr>
+    <th>Słowo</th>
+    <th>Tłumaczenie</th>
+    <th>Język</th>
+    <th></th>
+  </tr>
+  </thead>
+  {% for word in words %}
+  <tbody id="myTable">
+  <tr>
+   <form name = "myform" method="POST">
+    <td>{{ word.word }}</td>
+    <td>{{ word.translation }}</td>
+    <td>{{ word.language }}</td>
+    <td style="text-align: center;"><button name="submit" class="btn btn-secondary btn-sm" type="submit" value={{ word.Id }} style="align: center; font-size: 15px;" class="zsk2">Dodaj</button></td>
+    </form>
+  </tr>
+  
+   {% endfor %}  
+  </tbody>
+</table>
+
+</div>
+</br>
+
+<div class="navigation" >
+{{ knp_pagination_render(words) }}
+</div>
+
+</div>
+
+
+{% endblock %}
+

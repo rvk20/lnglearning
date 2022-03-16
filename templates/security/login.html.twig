@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logowanie{% endblock %}
+
+{% block body %}
+</br>
+<div class="example-wrapper" style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  ">
+<form method="post" style="padding: .8em 1.2em;">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+   
+
+    <h1 class="h3 mb-3 font-weight-normal">Panel logowania</h1>
+    <label for="inputUsername">Nazwa użytkownika</label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+    </br>
+    <label for="inputPassword">hasło</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" required>
+    </br>
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Zaloguj się
+    </button>
+</form>
+ &nbsp &nbsp Nie masz konta?
+ </br>
+ &nbsp &nbsp <a href="register">Zarejestruj się</a>
+  </br>
+  </br>
+  </div>
+{% endblock %}

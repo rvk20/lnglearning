@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Rejestracja{% endblock %}
+{% block body %}
+</br>
+<div class="example-wrapper" style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  ">
+  
+  <h1 class="h3 mb-3 font-weight-normal">Rejestracja</h1>
+    {{ form(form) }}
+    Masz już konto?
+    </br>   
+    <a href="login">Zaloguj się</a>
+    </div>
+{% endblock %}
